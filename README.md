@@ -3,7 +3,7 @@
 
 A powerful inventory management solution for electronics labs, built with the **MERN stack** (MongoDB, Express.js, React, Node.js).
 
-![Dashboard Preview](images/dashboard-preview.png) <!-- Replace with your actual image path -->
+![Dashboard Preview](images\Dashboard - Copy.png) <!-- Replace with your actual image path -->
 
 ---
 
