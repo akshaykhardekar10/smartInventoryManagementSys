@@ -1,19 +1,35 @@
-# SmartLIMS - Full-Stack Inventory Management System
 
-A complete inventory management system for electronics labs using the MERN stack (MongoDB, Express.js, React, Node.js).
+# 📦 **SmartLIMS** – Full-Stack Inventory Management System
+
+A powerful inventory management solution for electronics labs, built with the **MERN stack** (MongoDB, Express.js, React, Node.js).
+
+![Dashboard Preview](images/dashboard-preview.png) <!-- Replace with your actual image path -->
+
+---
 
 ## 🚀 Quick Setup
 
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (running on localhost:27017)
-- npm or yarn
+### ⚙️ Prerequisites
 
-### 1. Database Setup
+- 🟢 Node.js (v16 or higher)
+- 🍃 MongoDB (running on `localhost:27017`)
+- 📦 npm or yarn
 
-Your MongoDB is already configured correctly at `mongodb://localhost:27017/smartlims`. The database will be created automatically when you first run the application.
+---
 
-### 2. Backend Setup
+### 🗄️ 1. Database Setup
+
+SmartLIMS uses MongoDB at:
+
+```
+mongodb://localhost:27017/smartlims
+```
+
+> 🧠 The database will be auto-created on first run.
+
+---
+
+### 🖥️ 2. Backend Setup
 
 ```bash
 cd server
@@ -21,9 +37,11 @@ npm install
 npm run dev
 ```
 
-The server will start on `http://localhost:5000`
+📍 Server: `http://localhost:5000`
 
-### 3. Frontend Setup
+---
+
+### 💻 3. Frontend Setup
 
 ```bash
 cd client
@@ -31,180 +49,227 @@ npm install
 npm run dev
 ```
 
-The frontend will start on `http://localhost:5173`
+🌐 Frontend: `http://localhost:5173`
 
-### 4. Create Admin User
+---
 
-Run this command from the server directory to create the initial admin user:
+### 👤 4. Create Admin User
 
 ```bash
 cd server
 node scripts/setupAdmin.js
 ```
 
-This will create an admin user with:
+🧑 **Admin Credentials**:
+
 - Email: `admin@smartlims.com`
 - Password: `admin123`
 
-## 🔧 Manual Steps Required
+---
 
-### 1. Start MongoDB
-Make sure MongoDB is running on your system:
+## 🔧 Manual Setup Steps
+
+### 1️⃣ Start MongoDB
+
 ```bash
-# On Windows, start MongoDB service
-# Or if you have MongoDB installed locally, run:
 mongod
 ```
 
-### 2. Create Admin User
-Run the setup script:
+### 2️⃣ Create Admin User (if not already done)
+
 ```bash
 cd server
 node scripts/setupAdmin.js
 ```
 
-### 3. Test the Application
-1. Open `http://localhost:5173` in your browser
-2. Login with the admin credentials
-3. Start adding components and logging movements
+### 3️⃣ Test the App
 
-## 📁 Project Structure
+- Visit: `http://localhost:5173`
+- Login with the admin credentials
+- Start managing your inventory 🎉
+
+---
+
+## 🗂️ Project Structure
 
 ```
 A111/
 ├── client/                 # React Frontend
 │   ├── src/
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/         # Page components
-│   │   ├── services/      # API services
-│   │   ├── contexts/      # React contexts
-│   │   └── App.jsx        # Main app component
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Page-level components
+│   │   ├── services/       # API integrations
+│   │   ├── contexts/       # React Context API
+│   │   └── App.jsx         # Root component
 │   └── package.json
-└── server/                # Node.js Backend
-    ├── models/            # MongoDB models
-    ├── routes/            # API routes
-    ├── middlewares/       # Auth middleware
-    ├── utils/             # Utility functions
-    ├── scripts/           # Setup scripts
-    └── server.js          # Main server file
+└── server/                 # Node.js Backend
+    ├── models/             # Mongoose models
+    ├── routes/             # Express routes
+    ├── middlewares/        # Auth middleware
+    ├── utils/              # Helper utilities
+    ├── scripts/            # Setup scripts
+    └── server.js           # Entry point
 ```
 
-## 🎯 Features
+---
 
-### Authentication & Authorization
-- JWT-based authentication
-- Role-based access control (Admin, Technician, Researcher)
-- Protected routes
+## ✨ Features
 
-### Dashboard
-- Monthly stock movement charts
+### 🔐 Authentication & Roles
+
+- JWT-based auth
+- Admin / Technician / Researcher roles
+- Role-based route protection
+
+### 📊 Dashboard
+
+- Monthly stock charts
 - Low stock alerts
-- Old stock tracking (>3 months)
-- Total inventory value
+- Inactive stock tracking (>3 months)
+- Inventory value calculation
 
-### Inventory Management
-- Add/Edit/Delete components (Admin only)
-- Filter by category, part number, location
+### 🧰 Inventory Management
+
+- Add, edit, delete components (Admin only)
+- Filter by part number, category, or location
+- QR code generation for components
 - Search functionality
-- QR code generation for each component
 
-### Stock Movement
-- Log inward/outward movements
+### 🔁 Stock Movement
+
+- Log inward/outward inventory movements
 - Track reasons and quantities
-- Automatic stock updates
+- Auto-adjust inventory levels
 
-## 🔐 Default Users
+---
 
-After running the setup script, you can create additional users manually in MongoDB:
+## 👤 Default Users (Example)
 
-```javascript
-// Example users you can create
+You can add these manually in MongoDB:
+
+```json
 {
   "name": "Technician User",
   "email": "tech@smartlims.com",
   "password": "tech123",
   "role": "technician"
 }
+```
 
+```json
 {
-  "name": "Researcher User", 
+  "name": "Researcher User",
   "email": "researcher@smartlims.com",
   "password": "researcher123",
   "role": "researcher"
 }
 ```
 
-## 🛠️ Troubleshooting
+---
 
-### MongoDB Connection Issues
-- Ensure MongoDB is running on localhost:27017
-- Check if the MongoDB service is started
-- Verify the connection string in `server/config.env`
+## 🧪 API Endpoints
 
-### Port Issues
-- Backend runs on port 5000
-- Frontend runs on port 5173
-- Make sure these ports are available
+### 🔐 Auth
 
-### Authentication Issues
-- Clear browser localStorage if you encounter token issues
-- Check the browser console for API errors
-- Verify the JWT_SECRET in config.env
+| Method | Endpoint             | Description        |
+|--------|----------------------|--------------------|
+| POST   | `/api/auth/login`    | User login         |
+| GET    | `/api/auth/me`       | Current user info  |
 
-## 📝 API Endpoints
+### 📦 Components
 
-### Authentication
-- `POST /api/auth/login` - User login
-- `GET /api/auth/me` - Get current user
+| Method | Endpoint                     | Description           |
+|--------|------------------------------|-----------------------|
+| GET    | `/api/components`            | List all components   |
+| POST   | `/api/components`            | Create (Admin only)   |
+| PUT    | `/api/components/:id`        | Update (Admin only)   |
+| DELETE | `/api/components/:id`        | Delete (Admin only)   |
 
-### Components
-- `GET /api/components` - Get all components (with filters)
-- `POST /api/components` - Create component (Admin only)
-- `PUT /api/components/:id` - Update component (Admin only)
-- `DELETE /api/components/:id` - Delete component (Admin only)
+### 🔄 Stock Logs
 
-### Stock Logs
-- `GET /api/stocklogs` - Get all stock logs
-- `POST /api/stocklogs` - Create stock log
+| Method | Endpoint               | Description      |
+|--------|------------------------|------------------|
+| GET    | `/api/stocklogs`       | List stock logs  |
+| POST   | `/api/stocklogs`       | Add stock log    |
 
-### Dashboard
-- `GET /api/dashboard/stats` - Get dashboard statistics
-- `GET /api/dashboard/charts` - Get chart data
+### 📊 Dashboard
 
-## 🎨 Technologies Used
+| Method | Endpoint                  | Description          |
+|--------|---------------------------|----------------------|
+| GET    | `/api/dashboard/stats`    | Dashboard stats      |
+| GET    | `/api/dashboard/charts`   | Chart data           |
 
-**Frontend:**
-- React 18 with Vite
-- React Router for navigation
-- Tailwind CSS for styling
-- Chart.js for analytics
-- qrcode.react for QR generation
-- Axios for API calls
+---
 
-**Backend:**
-- Node.js with Express
-- MongoDB with Mongoose
-- JWT for authentication
-- bcryptjs for password hashing
-- qrcode for QR generation
+## 💻 Tech Stack
+
+### 🌐 Frontend
+
+- ⚛️ React 18 + Vite
+- 📍 React Router
+- 💅 Tailwind CSS
+- 📊 Chart.js
+- 📷 qrcode.react
+- 📡 Axios
+
+### 🔧 Backend
+
+- 🟢 Node.js + Express
+- 🍃 MongoDB + Mongoose
+- 🔐 JWT Auth
+- 🔑 bcryptjs
+- 📷 qrcode package (QR generation)
+
+---
 
 ## 🚀 Deployment
 
-### Backend Deployment
-1. Set environment variables for production
-2. Use a process manager like PM2
-3. Set up MongoDB Atlas for cloud database
+### 📡 Backend
 
-### Frontend Deployment
-1. Build the project: `npm run build`
-2. Deploy to Vercel, Netlify, or any static hosting
+- Set environment variables
+- Use PM2 or Docker
+- Optional: Use MongoDB Atlas
 
-## 📞 Support
+### 🌍 Frontend
 
-If you encounter any issues:
-1. Check the browser console for errors
-2. Check the server logs for backend errors
-3. Verify MongoDB connection
-4. Ensure all dependencies are installed
+```bash
+npm run build
+```
 
-The application is now ready to use! Start with the backend, then frontend, and create the admin user to begin managing your inventory. 
+Then deploy via:
+
+- [Vercel](https://vercel.com)
+- [Netlify](https://www.netlify.com)
+- Any static hosting provider
+
+---
+
+## 🧑‍💻 UI Screenshots
+
+> Replace these placeholders with actual screenshots:
+
+- ![Login](images/login-page.png)
+- ![Dashboard](images/dashboard.png)
+- ![Inventory](images/inventory-table.png)
+- ![QR Code](images/qr-code.png)
+
+---
+
+## 🆘 Support
+
+If you encounter issues:
+
+1. ✅ Check browser console
+2. 🪵 Inspect backend logs
+3. 🧪 Confirm MongoDB is running
+4. 🔁 Re-run admin setup
+5. 📦 Ensure all dependencies are installed
+
+---
+
+## 🏁 You're Ready!
+
+1. Start the backend
+2. Run the frontend
+3. Create the admin user
+4. 🚀 Begin managing your lab inventory!
