@@ -2,6 +2,7 @@
 # 📦 **SmartLIMS** – Full-Stack Inventory Management System
 
 A complete inventory management system for electronics labs using the MERN stack (MongoDB, Express.js, React, Node.js).
+![Dashboard Preview](images/Dashboard.png)
 
 ## 🚀 Quick Setup
 
@@ -244,10 +245,10 @@ Then deploy via:
 
 > Replace these placeholders with actual screenshots:
 
-- ![Login](images/login-page.png)
-- ![Dashboard](images/dashboard.png)
-- ![Inventory](images/inventory-table.png)
-- ![QR Code](images/qr-code.png)
+- ![Login](images/Login.png)
+- ![Dashboard](images/Dashboard.png)
+- ![Inventory](images/Inventory.png)
+- ![QR Code](images/QRcode.png)
 
 ---
 
